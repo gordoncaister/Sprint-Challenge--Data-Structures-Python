@@ -6,10 +6,10 @@ class RingBuffer:
 
     def append(self, item):
         if len(self.storage) < self.capacity:
-            print(str(len(self.storage))+">"+str(self.capacity))
+            # print(str(len(self.storage))+">"+str(self.capacity))
             self.storage.append(item)
         else:
-            print(f"{item}, {self.oldest}")
+            # print(f"{item}, {self.oldest}")
             self.storage.pop(self.oldest)
             self.storage.insert(self.oldest, item)
             if self.oldest == len(self.storage)-1:
