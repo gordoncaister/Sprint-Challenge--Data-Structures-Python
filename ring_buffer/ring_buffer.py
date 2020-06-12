@@ -5,16 +5,27 @@ class RingBuffer:
         self.oldest = 0
 
     def append(self, item):
-        print(len(self.storage)+"<"+self.capacity)
         if len(self.storage) < self.capacity:
-            self.storage.insert(0,item)
+            print(str(len(self.storage))+">"+str(self.capacity))
+            self.storage.append(item)
         else:
+            print(f"{item}, {self.oldest}")
+            self.storage.pop(self.oldest)
             self.storage.insert(self.oldest, item)
             if self.oldest == len(self.storage)-1:
                 self.oldest = 0
             else:
                 self.oldest +=1
         
-
     def get(self):
         return self.storage
+
+# test = RingBuffer(5)
+# test.append("a")
+# test.append("b")
+# test.append("c")
+# test.append("d")
+# test.append("e")
+# test.append("f")
+# test.append("g")
+# print(test.get())
